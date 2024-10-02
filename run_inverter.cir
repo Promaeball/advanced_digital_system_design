@@ -1,0 +1,22 @@
+* run_inverter
+
+.include inverter_skeleton.cir
+
+* supply
+.global vdd vss
+V0 vdd vss dc 1.2v
+V1 vss 0 0
+
+* inverter
+x1 in out inverter
+
+* voltage on the input
+Vin in 0 0
+
+.dc Vin 0v 1.2v 0.01v
+
+.control
+run
+plot in out
+.endc
+.end

@@ -12,13 +12,17 @@ Vin2 IN2 0 PULSE (0 1.0 0 1n 1n 5n 10n) * Input pulse 2
 CL OUT 0 1f        
 
 * Transistor Parameters
-.model tn nmos BSIM4 level=54 version=4.8.2
-.model tp pmos BSIM4 level=54 version=4.8.2
+.model tn nmos level=54 version=4.8.2 TOX=1.85n
+.model tp pmos level=54 version=4.8.2 TOX=1.95n
 
-* NMOS Transistors
-M1 OUT IN1 N1 0 NMOS W=130n L=50n
-M2 OUT IN2 N1 0 NMOS W=130n L=50n
+* PMOS
+M1 out in vdd vdd tp L=50n W=260n
++ AS=75.3f AD=75.3f PS=1.23u PD=1.23u
+M2 out in vdd vdd tp L=50n W=260n
++ AS=75.3f AD=75.3f PS=1.23u PD=1.23u
 
-* PMOS Transistors
-M3 OUT IN1 VDD VDD PMOS W=260n L=50n
-M4 OUT IN2 VDD VDD PMOS W=260n L=50n
+* NMOS
+M3 out in vss vss tn L=50n W=260n
++ AS=75.3f AD=75.3f PS=1.12u PD=1.23u
+M4 out in vss vss tn L=50n W=260n
++ AS=75.3f AD=75.3f PS=1.12u PD=1.23u

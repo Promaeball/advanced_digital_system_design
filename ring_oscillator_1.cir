@@ -1,0 +1,18 @@
+*ring_oscillator_1
+.include nand.cir
+.include inverter.cir
+.subckt ring_oscillator_1 enable output vdd vss
+X1 enable output n0 vdd vss nand tplv=0.990731 tpwv=1.021040 tnln=0.960777 tnwn=0.993521 tpotv=1.035896 tnotv=0.960607
+X2 n0 n1 vdd vss inverter tplv=0.972417 tpwv=1.031636 tnln=1.025396 tnwn=1.020517 tpotv=1.017944 tnotv=1.058095
+X3 n1 n2 vdd vss inverter tplv=1.048419 tpwv=1.022904 tnln=1.016697 tnwn=1.050878 tpotv=0.968433 tnotv=0.878380
+X4 n2 n3 vdd vss inverter tplv=1.088745 tpwv=0.936300 tnln=1.022006 tnwn=1.066489 tpotv=1.043410 tnotv=0.996538
+X5 n3 n4 vdd vss inverter tplv=1.041496 tpwv=1.007134 tnln=0.892095 tnwn=0.957499 tpotv=0.996107 tnotv=1.022343
+X6 n4 n5 vdd vss inverter tplv=1.043176 tpwv=0.930552 tnln=0.950898 tnwn=0.941786 tpotv=1.054211 tnotv=1.035272
+X7 n5 n6 vdd vss inverter tplv=1.087660 tpwv=0.897532 tnln=0.973059 tnwn=1.095866 tpotv=1.050772 tnotv=1.021992
+X8 n6 n7 vdd vss inverter tplv=0.994308 tpwv=0.934779 tnln=1.087803 tnwn=1.007049 tpotv=0.972018 tnotv=1.011930
+X9 n7 n8 vdd vss inverter tplv=0.993713 tpwv=1.003633 tnln=1.014609 tnwn=0.934164 tpotv=0.910228 tnotv=1.038354
+X10 n8 n9 vdd vss inverter tplv=1.071932 tpwv=1.082983 tnln=1.004398 tnwn=0.998534 tpotv=0.938428 tnotv=0.960013
+X11 n9 n10 vdd vss inverter tplv=0.996865 tpwv=0.939622 tnln=1.082020 tnwn=0.976469 tpotv=1.013715 tnotv=1.039160
+X12 n10 n11 vdd vss inverter tplv=0.975133 tpwv=1.013533 tnln=1.046088 tnwn=0.955135 tpotv=1.032398 tnotv=0.969045
+X13 n11 output vdd vss inverter tplv=0.906988 tpwv=0.954769 tnln=0.981846 tnwn=1.054394 tpotv=0.979253 tnotv=1.031614
+.ends ring_oscillator_1

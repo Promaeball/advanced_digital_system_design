@@ -41,29 +41,37 @@ begin
 	-- uses the `clock' input and the `reset' input from toplevel
 	-- still might need to look at
 	
-	entity control_unit is
-	generic (
-		challenge_bits 		
-		clock_frequency:	
-		delay_us:			
-	);
-	port (
-		clock => clock,
-		reset => reset,
-		enable => enable
+	fsm : control_unit
+		generic map (
+			challenge_bits 		
+			clock_frequency:	
+			delay_us:			
+		);
+		port map (
+			clock => clock,
+			reset => reset,
+			enable => enable
 		
-		counter_enable:	out	std_logic;
-		counter_reset:	out	std_logic;
-		challenge:		out	std_logic_vector(2*challenge_bits - 1 downto 0);
-		store_response:	out	std_logic;
-		done:	out	std_logic
-	);
-	end entity control_unit;
+			counter_enable:	out	std_logic;
+			counter_reset:	out	std_logic;
+			challenge:		out	std_logic_vector(2*challenge_bits - 1 downto 0);
+			store_response:	out	std_logic;
+			done:	out	std_logic
+		);
+
 
 	-- TODO: BRAM
 	-- create a BRAM using the IP Catalog, instance it here
 	-- make sure you enable the In-System Memory Viewer!
-	
-	
+	: BRAM
+		generic map (
+		
+		);	
+		port map (
+            address => challenge,
+            clock => clock,
+            data => response_vec,
+            wren => write_mem
+        );
 
 end architecture top;

@@ -21,7 +21,7 @@ x7 enable ro7 vdd vss ring_oscillator_7
 
 .temp 27
 
-V0 vdd vss dc 1v
+V0 vdd vss dc 1.2V
 V1 vss 0 0
 
 Vin enable 0 dc 0 pulse (0 1V 0.1n 0.1n 0.5n 10.2n 0 )

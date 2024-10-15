@@ -1,5 +1,7 @@
 *run_oscillators.cir
 
+.param vhigh=1.2V
+
 .include ring_oscillator_0.cir
 .include ring_oscillator_1.cir
 .include ring_oscillator_2.cir
@@ -21,7 +23,7 @@ x7 enable ro7 vdd vss ring_oscillator_7
 
 .temp 27
 
-V0 vdd vss dc 1.2V
+V0 vdd vss dc vhigh
 V1 vss 0 0
 
 Vin enable 0 dc 0 pulse (0 1V 0.1n 0.1n 0.5n 10.2n 0 )

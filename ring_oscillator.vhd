@@ -35,7 +35,6 @@ begin
 
 		invert_inputs: for i in 1 to ro_length - 1 generate
 			inverter(i) <= not inverter(i-1);
-
 		end generate invert_inputs;
 
 

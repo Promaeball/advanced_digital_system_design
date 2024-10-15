@@ -30,8 +30,10 @@ Vin enable 0 dc 0 pulse (0 1V 0.1n 0.1n 0.5n 10.2n 0 )
 
 .control
 run
-* DC sweep on Vin
-*dc Vin 0v 1.2v 0.01v
+* write data to CSV file
+wrdata oscillator_waveforms.csv ro0 ro1 ro2 ro3 ro4 ro5 ro6 ro7
+.endc
+
 * plot input and output
 tran 0.01n 12n 0n
 
@@ -42,7 +44,3 @@ plot ro0 ro1 ro2 ro3 ro4 ro5 ro6 ro7
 
 .endc
 .end
-
-
-
-

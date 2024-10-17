@@ -1,0 +1,36 @@
+* NAND2-stimulus
+* Simulation parameters
+.param vhigh=1.2v
+
+* Global power nets
+.global vss vdd
+vss vss 0 dc 0
+vdd vdd 0 dc vhigh
+
+* Transistor model declarations
+.model tp pmos level=54 version=4.8.2
+.model tn nmos level=54 version=4.8.2
+
+* Import subcircuit
+.include NAND2.sp
+
+* Declare component, X for subcircuits
+x0 a b o nand2x1
+
+* Stimulus
+va a vss pwl (0n 0v 9n 0v 10n vhigh 19n vhigh)
+vb b vss pwl (0n 0v 4n 0v 5n vhigh 9n vhigh 10n 0v 14n 0v 15n vhigh 19n vhigh)
+
+* Simulation from 0n to 19n at 0.01n steps
+.tran 0.01n 19n 0n
+
+.control
+run
+
+* Plot a, b, and c with offsets for easy viewing
+plot {v(a)} {v(b)+2} {v(o)+4}
+
+* Write data to CSV file
+wrdata nand-gate-data.csv a b o
+.endc
+.end

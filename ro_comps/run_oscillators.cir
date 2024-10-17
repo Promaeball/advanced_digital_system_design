@@ -1,0 +1,46 @@
+*run_oscillators.cir
+
+.param vhigh=1.2V
+
+.include ring_oscillator_0.cir
+.include ring_oscillator_1.cir
+.include ring_oscillator_2.cir
+.include ring_oscillator_3.cir
+.include ring_oscillator_4.cir
+.include ring_oscillator_5.cir
+.include ring_oscillator_6.cir
+.include ring_oscillator_7.cir
+
+
+x0 enable ro0 vdd vss ring_oscillator_0
+x1 enable ro1 vdd vss ring_oscillator_1
+x2 enable ro2 vdd vss ring_oscillator_2
+x3 enable ro3 vdd vss ring_oscillator_3
+x4 enable ro4 vdd vss ring_oscillator_4
+x5 enable ro5 vdd vss ring_oscillator_5
+x6 enable ro6 vdd vss ring_oscillator_6
+x7 enable ro7 vdd vss ring_oscillator_7
+
+.temp 27
+
+V0 vdd vss dc vhigh
+V1 vss 0 0
+
+Vin enable 0 dc 0 pulse (0 1V 0.1n 0.1n 0.5n 10.2n 0 )
+
+.control
+run
+* write data to CSV file
+wrdata oscillator_waveforms.csv ro0 ro1 ro2 ro3 ro4 ro5 ro6 ro7
+.endc
+
+* plot input and output
+tran 0.01n 12n 0n
+
+* plot varying oscillators
+plot ro0 ro1 ro2 ro3 ro4 ro5 ro6 ro7
+
+
+
+.endc
+.end
